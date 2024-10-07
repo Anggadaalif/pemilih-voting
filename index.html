@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Voting Decentralized - Pemilih</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Voting DApp" name="keywords">
+    <meta content="Decentralized Voting Application" name="description">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Libraries -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        /* Header and Navigation */
+        .navbar {
+            background-color: #333;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 15px;
+            text-transform: uppercase;
+        }
+
+        .navbar a:hover {
+            color: #ddd;
+        }
+
+        /* Main Sections */
+        .content-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .content-header {
+            margin-bottom: 50px;
+        }
+
+        .content-header h2 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .btn-custom {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .btn-custom:hover {
+            background-color: #45a049;
+        }
+
+        /* Table Styles */
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        /* Footer Styles */
+        #footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        #footer p {
+            margin: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar Start -->
+    <div id="header">
+        <img src="/assets/bg2.png" alt="logo" height="75" width="75">
+        <a href="#">Sistem E-Voting Berbasis Blockchain</a>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="/index.html">Pemilihan Ketua RT</a>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Voting Section Start -->
+    <section id="voting" class="content-section">
+        <div class="container">
+            <div class="content-header">
+                <br>
+                <h2>Hubungkan MetaMask</h2>
+            </div>
+            <button class="btn-custom" onclick="connectMetamask()">Hubungkan Akun Metamask</button>
+            <p id="metamasknotification"></p>
+        </div>
+    </section>
+    <!-- Voting Section End -->
+
+    <!-- Results Section Start -->
+    <section id="results" class="content-section bg-light">
+        <div class="container">
+            <div class="content-header">
+                <h2>List Nama-Nama Kandidat</h2>
+                <button class="btn-custom" onclick="getAllCandidates()">Tampilkan Nama Kandidat</button>
+                <p id="p3"></p>
+            </div>
+            <table id="myTable">
+                <thead>
+                    <tr>
+                        <th>Id Kandidat</th>
+                        <th>Nama Kandidat</th>
+                        <th>Aksi</th> <!-- Kolom untuk tombol Vote -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data dari JavaScript akan dimasukkan di sini -->
+                </tbody>                
+            </table>
+            <p id="cand"></p> <!-- To show voting messages -->
+        </div>
+    </section>
+    <!-- Results Section End -->
+
+    <!-- Footer Start -->
+    <div id="footer">
+        <p>&copy; Sistem Pemungutan Suara yang terdesentralisasi untuk masa depan yang lebih aman dan Transparan.</p>
+    </div>
+    <!-- Footer End -->
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="https://cdn.ethers.io/lib/ethers-5.7.1.umd.min.js" type="application/javascript"></script>
+    <script src="main.js"></script>
+    
+</body>
+
+</html>
