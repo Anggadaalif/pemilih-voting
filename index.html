@@ -20,6 +20,38 @@
     <!-- Custom Styles -->
     <style>
         /* Header and Navigation */
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+        }
+        .alert {
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .alert-warning {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+        }
+
         .navbar {
             background-color: #333;
             padding: 15px 0;
@@ -70,22 +102,49 @@
             background-color: #45a049;
         }
 
-        /* Table Styles */
-        table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
+        /* Styling for candidates section */
+        .candidates-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        table th, table td {
-            padding: 12px;
+        .candidate-card {
+            background-color: #f9f9f9;
             border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px;
+            width: 250px;
             text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        table th {
-            background-color: #f2f2f2;
+        .candidate-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .candidate-card h3 {
+            font-size: 18px;
             font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .candidate-card button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .candidate-card button:hover {
+            background-color: #45a049;
         }
 
         /* Footer Styles */
@@ -113,7 +172,7 @@
 
     <!-- Navbar -->
     <div class="navbar">
-        <a href="/index.html">Pemilihan Ketua RT</a>
+        <a href="/index.html">Sistem E-Voting - Pemilih</a>
     </div>
     <!-- Navbar End -->
 
@@ -125,7 +184,7 @@
                 <h2>Hubungkan MetaMask</h2>
             </div>
             <button class="btn-custom" onclick="connectMetamask()">Hubungkan Akun Metamask</button>
-            <p id="metamasknotification"></p>
+            <p id="metamasknotification">MetaMask belum terhubung.</p>
         </div>
     </section>
     <!-- Voting Section End -->
@@ -138,19 +197,20 @@
                 <button class="btn-custom" onclick="getAllCandidates()">Tampilkan Nama Kandidat</button>
                 <p id="p3"></p>
             </div>
-            <table id="myTable">
-                <thead>
-                    <tr>
-                        <th>Id Kandidat</th>
-                        <th>Nama Kandidat</th>
-                        <th>Aksi</th> <!-- Kolom untuk tombol Vote -->
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Data dari JavaScript akan dimasukkan di sini -->
-                </tbody>                
-            </table>
+
+            <!-- Container for Candidates -->
+            <div id="candidates" class="candidates-container">
+                <!-- Data akan dimasukkan di sini oleh JavaScript -->
+            </div>
+
             <p id="cand"></p> <!-- To show voting messages -->
+        </div>
+
+        <div id="loading-spinner" style="display: none; text-align: center; margin: 20px 0;">
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <p>Memproses voting Anda, harap tunggu...</p>
         </div>
     </section>
     <!-- Results Section End -->
@@ -162,13 +222,17 @@
     <!-- Footer End -->
 
     <!-- JavaScript Libraries -->
+    <script src="https://unpkg.com/ethers@5.7.1/dist/ethers.umd.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.7.1.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-    <!-- Custom JS -->
-    <script src="https://cdn.ethers.io/lib/ethers-5.7.1.umd.min.js" type="application/javascript"></script>
-    <script src="main.js"></script>
-    
+    <!-- Pastikan main.js di-load setelah semua library -->
+    <script src="./main.js"></script>
+
 </body>
 
 </html>
